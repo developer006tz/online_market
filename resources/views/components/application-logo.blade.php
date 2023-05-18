@@ -1,0 +1,1 @@
+ <img src="{{asset('assets/images/logo-2.png')}}" width="300" height="40" class="hue-rotate-30 w-60" />
