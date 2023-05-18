@@ -4,14 +4,19 @@
         <h2 class="font-serif text-5xl text-gray-600 mb-4 text-center md:self-start md:text-left">Post, Describe  and wait for Response</h2>
         <p class="uppercase text-gray-600 tracking-wide text-center md:self-start md:text-left">Most secure marketplace.</p>
         <p class="uppercase text-gray-600 tracking-wide text-center md:self-start md:text-left">from market to your home.</p>
-        <a href="#" class="bg-gradient-to-r from-pink-400 to-yellow-600 rounded-full py-4 px-8 text-gray-50 uppercase text-xl md:self-start my-5">Post now</a>
+         @if(!Auth::check())
+         <a href="#" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="bg-gradient-to-r from-pink-400 to-yellow-600 rounded-full py-4 px-8 text-gray-50 uppercase text-xl md:self-start my-5">Post now</a>
+         @else
+         <a href="{{url('/posts/create')}}" class="bg-gradient-to-r from-pink-400 to-yellow-600 rounded-full py-4 px-8 text-gray-50 uppercase text-xl md:self-start my-5">Post now</a>
+         @endif
+        
       </div>
       <div class="md:w-3/5 ml-2">
-        <div id="default-carousel" class="relative w-full" data-carousel="slide">
+        <div id="default-carousel" class="relative w-full carousel slide">
           <!-- Carousel wrapper -->
           <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
             <!-- Item 1 -->
-            @isset($posts)
+            @isset($recent_posts)
             @forelse($recent_posts as $post)
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
               <img src="{{ $post->image ? url(\Storage::url($post->image)) : '' }}"
@@ -78,4 +83,26 @@
 
       </div>
     </div>
+    @endpush
+    @push('scripts')
+    <script>
+$(document).ready(function(){
+  $('#default-carousel').attr('data-carousel', 'slide');
+   var carousel = $('#default-carousel').carousel();
+   // Pause cycling on hover
+  $('#default-carousel').on('mouseenter', function(){
+    carousel.pause();
+  });
+   // Resume cycling on mouse leave
+  $('#default-carousel').on('mouseleave', function(){
+    carousel.cycle();
+  });
+  
+  // Pause cycling on click
+  $('#default-carousel').on('click', function(){
+    carousel.pause();
+  });
+ 
+});
+</script>
     @endpush

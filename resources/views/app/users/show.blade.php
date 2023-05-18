@@ -38,7 +38,7 @@
                             @lang('crud.users.inputs.photo')
                         </h5>
                         <x-partials.thumbnail
-                            src="{{ $user->photo ? \Storage::url($user->photo) : '' }}"
+                            src="{{ $user->photo ? url(\Storage::url($user->photo)) : '' }}"
                             size="150"
                         />
                     </div>

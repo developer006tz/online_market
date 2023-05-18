@@ -17,7 +17,7 @@
                     </x-nav-link>
                 </div>
 
-                <x-nav-dropdown title="Apps" align="right" width="48">
+                {{-- <x-nav-dropdown title="Apps" align="right" width="48"> --}}
                         @can('view-any', App\Models\User::class)
                         <x-dropdown-link href="{{ route('users.index') }}">
                         Users
@@ -43,7 +43,7 @@
                         Posts
                         </x-dropdown-link>
                         @endcan
-                </x-nav-dropdown>
+                {{-- </x-nav-dropdown> --}}
 
                 @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) || 
                     Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))

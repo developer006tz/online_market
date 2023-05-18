@@ -21,7 +21,7 @@
       Login
     </a>
     @else 
-        <a href="{{url('/posts/create')}}" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4">create post</a>
+        <a href="{{route('chat')}}" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4"><i class="fa-solid fa-comments"></i></a>
         <a href="{{url('/posts')}}" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4">my posts</a>
         
         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4">logout</a>
