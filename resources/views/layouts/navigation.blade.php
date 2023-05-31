@@ -28,7 +28,7 @@
                         Post Categories
                         </x-dropdown-link>
                         @endcan
-                        @can('view-any', App\Models\Message::class)
+                        {{-- @can('view-any', App\Models\Message::class)
                         <x-dropdown-link href="{{ route('messages.index') }}">
                         Messages
                         </x-dropdown-link>
@@ -37,7 +37,7 @@
                         <x-dropdown-link href="{{ route('conversations.index') }}">
                         Conversations
                         </x-dropdown-link>
-                        @endcan
+                        @endcan --}}
                         @can('view-any', App\Models\Post::class)
                         <x-dropdown-link href="{{ route('posts.index') }}">
                         Posts

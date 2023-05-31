@@ -57,7 +57,7 @@ class PostCategoryController extends Controller
         $postCategory = PostCategory::create($validated);
 
         return redirect()
-            ->route('post-categories.edit', $postCategory)
+            ->route('post-categories.index', $postCategory)
             ->withSuccess(__('crud.common.created'));
     }
 

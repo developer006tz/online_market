@@ -95,7 +95,6 @@ class PostController extends Controller
     public function show(Request $request, Post $post): View
     {
         $this->authorize('view', $post);
-
         return view('app.posts.show', compact('post'));
     }
 
