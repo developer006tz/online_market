@@ -22,10 +22,7 @@
               <h3 class="bg-gray-1 border-yellow- font-extrabold"><a href="#">{{Str::limit($post->title,30) ?? '-'}}</a></h3>
               <div
                 class="wrapper p-1 rounded-lg border-gray-300 bg-pink-50 shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-                {{-- <div class="flex flex-row my-3">
-                  <div class="size mr-2">size: large</div>
-                  <div class="color">color: white/black</div>
-                </div> --}}
+               
                 <div class="flex flex-row my-3">
                   <p>{{Str::limit($post->description,70) ?? '-'}}</p>
                 </div>
