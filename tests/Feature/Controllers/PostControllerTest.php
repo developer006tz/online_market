@@ -18,7 +18,7 @@ class PostControllerTest extends TestCase
         parent::setUp();
 
         $this->actingAs(
-            User::factory()->create(['email' => 'admin@admin.com'])
+            User::factory()->create(['email' => 'admin@chambalo.com'])
         );
 
         $this->seed(\Database\Seeders\PermissionsSeeder::class);

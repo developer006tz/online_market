@@ -13,7 +13,7 @@ class PostCategorySeeder extends Seeder
     public function run(): void
     {
         PostCategory::factory()
-            ->count(5)
+            ->count(0)
             ->create();
     }
 }

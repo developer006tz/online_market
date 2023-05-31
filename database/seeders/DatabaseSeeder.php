@@ -15,7 +15,9 @@ class DatabaseSeeder extends Seeder
         $user = \App\Models\User::factory()
             ->count(1)
             ->create([
-                'email' => 'admin@admin.com',
+                'email' => 'admin@chambalo.com',
+                'name'=>'Deodatha Chambalo',
+                'phone'=>'0783562967',
                 'password' => \Hash::make('admin'),
             ]);
         $this->call(PermissionsSeeder::class);

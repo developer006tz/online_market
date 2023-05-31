@@ -13,7 +13,7 @@ class ConversationSeeder extends Seeder
     public function run(): void
     {
         Conversation::factory()
-            ->count(5)
+            ->count(0)
             ->create();
     }
 }

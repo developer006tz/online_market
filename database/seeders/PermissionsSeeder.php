@@ -41,8 +41,11 @@ class PermissionsSeeder extends Seeder
 
         // Create user role and assign existing permissions
         $currentPermissions = Permission::all();
-        $userRole = Role::create(['name' => 'user']);
+        $userRole = Role::create(['name' => 'customer']);
         $userRole->givePermissionTo($currentPermissions);
+
+        $sellerRole = Role::create(['name' => 'seller']);
+        $sellerRole->givePermissionTo($currentPermissions);
 
         // Create admin exclusive permissions
         Permission::create(['name' => 'list roles']);
@@ -68,7 +71,7 @@ class PermissionsSeeder extends Seeder
         $adminRole = Role::create(['name' => 'super-admin']);
         $adminRole->givePermissionTo($allPermissions);
 
-        $user = \App\Models\User::whereEmail('admin@admin.com')->first();
+        $user = \App\Models\User::whereEmail('admin@chambalo.com')->first();
 
         if ($user) {
             $user->assignRole($adminRole);
