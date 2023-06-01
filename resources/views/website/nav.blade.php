@@ -15,7 +15,7 @@
     <a href="#" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4">Near you</a>
     <a href="#" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4">recent</a>
     @if(!Auth::check())
-    <a href="#" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4">register</a>
+    <a href="{{route('register')}}" class="text-gray-600 hover:text-purple-600 p-4 px-3 sm:px-4">register</a>
     <a href="#" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class=" text-gray-50 bg-gradient-to-r from-pink-400 to-yellow-600 hover:bg-purple-700 p-3 px-3 sm:px-5 rounded-full">
       <i class="fa-solid fa-right-to-bracket"></i>
       Login
