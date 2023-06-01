@@ -27,10 +27,22 @@ class PostController extends Controller
 
         $search = $request->get('search', '');
 
-        $posts = Post::search($search)
-            ->latest()
-            ->paginate(5)
-            ->withQueryString();
+        // $posts = Post::search($search)
+        //     ->latest()
+        //     ->paginate(5)
+        //     ->withQueryString();
+
+        if (auth()->user()->hasRole('super-admin')) {
+            $posts = Post::search($search)
+                ->latest()
+                ->paginate(10)
+                ->withQueryString();
+        } else {
+            $posts = Post::where('user_id', auth()->user()->id)->search($search)
+                ->latest()
+                ->paginate(10)
+                ->withQueryString();
+        }   
 
         return view('app.posts.index', compact('posts', 'search'));
     }
