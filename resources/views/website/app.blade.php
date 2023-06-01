@@ -39,9 +39,9 @@
 </style>
 <body>
   <div class="container mx-auto p-5">
-    @include('layout.nav')
-    @include('posts.recent')
-    @include('posts.all')
+    @include('website.nav')
+    @include('website-pages.posts.recent')
+    @include('website-pages.posts.all')
     <!-- Main Navigation -->
     <!-- login modal -->
     
@@ -61,10 +61,10 @@
       
       <!-- Newsletter Section -->
       @stack('news-teller')
-      @include('layout.footer')
+      @include('website.footer')
       <!-- Footer Section -->
       </div>
-      @include('templates.login-modal')
+      @include('website-pages.login-modal')
       @stack('modals')
         
         @livewireScripts
