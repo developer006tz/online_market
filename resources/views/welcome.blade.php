@@ -1,3 +1,3 @@
-@extends('layout.app')
-@include('templates.hero')
-@include('templates.news-teller')
+@extends('website.app')
+@include('website-pages.hero')
+@include('website-pages.news-teller')
