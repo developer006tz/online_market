@@ -26,12 +26,6 @@ class PostController extends Controller
         $this->authorize('view-any', Post::class);
 
         $search = $request->get('search', '');
-
-        // $posts = Post::search($search)
-        //     ->latest()
-        //     ->paginate(5)
-        //     ->withQueryString();
-
         if (auth()->user()->hasRole('super-admin')) {
             $posts = Post::search($search)
                 ->latest()
@@ -53,9 +47,8 @@ class PostController extends Controller
     public function create(Request $request): View
     {
         $this->authorize('create', Post::class);
-
-        $users = User::pluck('name', 'id');
-
+        $user = auth()->user();
+        $users = $user->hasRole('customer') ||  $user->hasRole('seller')  ? collect([$user->id => $user->name]) : User::pluck('name', 'id');
         return view('app.posts.create', compact('users'));
     }
 
@@ -149,7 +142,7 @@ class PostController extends Controller
 
 
     public function update(
-        PostUpdateRequest $request,
+        PostStoreRequest $request,
         Post $post
     ): RedirectResponse {
         $this->authorize('update', $post);

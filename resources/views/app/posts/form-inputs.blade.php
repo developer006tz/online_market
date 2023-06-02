@@ -1,6 +1,7 @@
 @php $editing = isset($post) @endphp
 
 <div class="flex flex-wrap">
+    @if(Auth::user()->hasRole('super-admin'))
     <x-inputs.group class="w-full">
         <x-inputs.select name="user_id" label="User" required>
             @php $selected = old('user_id', ($editing ? $post->user_id : '')) @endphp
@@ -10,11 +11,14 @@
             @endforeach
         </x-inputs.select>
     </x-inputs.group>
+    @else
+        <x-inputs.hidden name="user_id" value="{{ auth()->id() }}"></x-inputs.hidden>
+    @endif
 
     <x-inputs.group class="w-full">
         <x-inputs.text
             name="title"
-            label="Title"
+            label="Post Title"
             :value="old('title', ($editing ? $post->title : ''))"
             maxlength="255"
             placeholder="Title"
