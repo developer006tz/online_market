@@ -6,7 +6,7 @@
             <div class="md:w-3/5 mr-4">
                 <div class="flex flex-col lg:flex-row rounded-lg overflow-hidden shadow-lg">
                     <div class="w-full lg:w-1/2 h-96 lg:h-auto">
-                        <img class="object-cover w-full h-full" src="{{asset('assets/images/products/men/product1.jpg')}}" alt="Kitten">
+                        <img class="object-cover w-full h-full" src="{{ $post->image ? url(\Storage::url($post->image)) : '' }}" alt="Kitten">
                     </div>
                     <div class="bg-white w-full lg:w-1/2 p-6">
                         <div class="flex justify-between items-center mb-2">
