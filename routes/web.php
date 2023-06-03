@@ -44,9 +44,7 @@ Route::middleware(['auth'])
 /*Route::get('/chat/{user}', function ($user) {
     return redirect()->route('chatify', ['id' => $user]);
 });*/
-Route::get('/chat/{user}', function ($user) {
-    return redirect()->route('chatify', ['id' => $user]);
-})->name('chat');
+
 
 Route::get('post-details/{post}', [
     PostController::class,
@@ -65,6 +63,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name(
         'profile.destroy'
     );
+    Route::get('/chat/{user}', function ($user) {
+        return redirect()->route('chatify', ['id' => $user]);
+    })->name('chat');
+    
 });
 
 Route::prefix('/')
@@ -78,4 +80,5 @@ Route::prefix('/')
         Route::resource('messages', MessageController::class);
         Route::resource('conversations', ConversationController::class);
         Route::resource('posts', PostController::class);
+
     });

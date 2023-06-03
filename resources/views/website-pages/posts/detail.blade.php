@@ -12,6 +12,7 @@
                         <div class="flex justify-between items-center mb-2">
                             <h2 class="text-gray-900 font-bold text-2xl">{{ $post->title ?? '-' }}</h2>
                         </div>
+                        <h3 class="text-gray-700 flex flex-row font-semibold text-xl mb-2"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() ?? '-' }}</h3>
                         <p class="text-gray-700 text-base">{{ $post->description ?? '-' }}</p>
 
                     </div>
@@ -23,7 +24,7 @@
                     <div class="bg-white w-full lg:w-2/2 p-6">
                         <div class="flex justify-between items-center mb-2">
 
-                            <img class="w-12 h-12 rounded-full"  src="{{ $post->user->photo ? url(\Storage::url($user->photo)) : asset('user.png') }}" alt="User Profile Image">
+                            <img class="w-12 h-12 rounded-full"  src="{{ $post->user->photo ? url(\Storage::url($post->user->photo)) : asset('user.png') }}" alt="User Profile Image">
                             <h2 class="text-gray-900 font-bold text-2xl"><i class="fa-solid fa-user-check"></i> client</h2>
 
                         </div>

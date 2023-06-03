@@ -1,7 +1,7 @@
 <div class="md:flex md:flex-row md:justify-between text-center text-sm sm:text-base">
   <div class="flex flex-row justify-center">
     <div class="w-30 h-20">
-      <img src="{{asset('assets/images/logo-2.png')}}" class="hue-rotate-30 w-60" />
+      <img src="{{asset('assets/images/logo_.png')}}" class="hue-rotate-30 w-60" />
     </div>
   </div>
 
