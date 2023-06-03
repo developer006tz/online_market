@@ -1,10 +1,11 @@
+@extends('website.app')
 @push('all')
 <div class="my-20">
   {{-- {{dd($posts_array)}} --}}
         <div class="flex flex-row justify-between my-5">
           <h2 class="text-3xl">All posts</h2>
-          <a href="#" class="flex flex-row text-lg hover:text-purple-700">
-            View All
+          <a href="{{url('/')}}" class="flex flex-row text-lg hover:text-purple-700">
+            back
             <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-5 ml-1" fill="none" viewBox="0 0 24 24"
               stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />

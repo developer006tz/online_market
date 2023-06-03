@@ -51,6 +51,11 @@ Route::get('post-details/{post}', [
     'web_show_post_details',
 ])->name('web_post.show');
 
+Route::get('all-posts', [
+    PostController::class,
+    'show_all_posts',
+])->name('all-post.show');
+
 require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->group(function () {
@@ -66,7 +71,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/chat/{user}', function ($user) {
         return redirect()->route('chatify', ['id' => $user]);
     })->name('chat');
-    
+
 });
 
 Route::prefix('/')

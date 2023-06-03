@@ -198,4 +198,9 @@ class PostController extends Controller
             ->route('posts.index')
             ->withSuccess(__('crud.common.removed'));
     }
+    public function show_all_posts(Request $request): View
+    {
+        $posts = Post::latest()->paginate(10);
+        return view('website-pages.posts.all', compact('posts'));
+    }
 }
