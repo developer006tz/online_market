@@ -41,6 +41,18 @@ Route::middleware(['auth'])
     ->name('dashboard');
 
 
+/*Route::get('/chat/{user}', function ($user) {
+    return redirect()->route('chatify', ['id' => $user]);
+});*/
+Route::get('/chat/{user}', function ($user) {
+    return redirect()->route('chatify', ['id' => $user]);
+})->name('chat');
+
+Route::get('post-details/{post}', [
+    PostController::class,
+    'web_show_post_details',
+])->name('web_post.show');
+
 require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->group(function () {

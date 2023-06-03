@@ -38,13 +38,18 @@
 
 </style>
 <body>
+@php
+
+$user = Auth::user();
+
+@endphp
   <div class="container mx-auto p-5">
     @include('website.nav')
-    @include('website-pages.posts.recent')
-    @include('website-pages.posts.all')
+
+
     <!-- Main Navigation -->
     <!-- login modal -->
-    
+
     <!-- end of login modal -->
     <!-- end of trigger login modal button -->
 
@@ -55,10 +60,10 @@
     @stack('recent')
 
     <!-- Men's Collection Section -->
-      
+
       @stack('all')
       <!-- Women's Collection Section -->
-      
+
       <!-- Newsletter Section -->
       @stack('news-teller')
       @include('website.footer')
@@ -66,18 +71,18 @@
       </div>
       @include('website-pages.login-modal')
       @stack('modals')
-        
+
         @livewireScripts
-        
+
         @stack('scripts')
-        
+
         <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
-        
-        @if (session()->has('success')) 
+
+        @if (session()->has('success'))
         <script>
             var notyf = new Notyf({dismissible: true})
             notyf.success('{{ session('success') }}')
-        </script> 
+        </script>
         @endif
       <!-- Include Flowbite JS -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.js"
@@ -88,5 +93,5 @@
 
       </script>
       </body>
-      
+
       </html>

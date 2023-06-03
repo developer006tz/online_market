@@ -36,7 +36,7 @@ class PostController extends Controller
                 ->latest()
                 ->paginate(10)
                 ->withQueryString();
-        }   
+        }
 
         return view('app.posts.index', compact('posts', 'search'));
     }
@@ -101,6 +101,11 @@ class PostController extends Controller
     {
         $this->authorize('view', $post);
         return view('app.posts.show', compact('post'));
+    }
+
+    public function web_show_post_details(Request $request, Post $post): View
+    {
+        return view('website-pages.posts.detail',compact('post'));
     }
 
     /**
