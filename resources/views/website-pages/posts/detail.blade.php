@@ -32,7 +32,7 @@
                         <div class="mt-3 flex justify-center">
                             <a href="{{ route('chat', ['user' => $post->user_id]) }}"
                                 class="w-full bg-gradient-to-r from-red-600 to-pink-500 rounded-full text-white font-bold py-2 px-4  transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-                                <i class="fa-solid fa-comments"></i> Chat with miss. Chambalo </a>
+                                <i class="fa-solid fa-comments"></i> Chat with {{ $post->user->name ?? '-' }} </a>
                         </div>
                         <div class="mt-4 flex justify-between">
                             <a href="#"
