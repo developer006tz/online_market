@@ -15,28 +15,6 @@
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<style>
-  .pagination {
-  @apply flex justify-center;
-}
-
-.page-item {
-  @apply mx-1;
-}
-
-.page-link {
-  @apply px-3 py-1 border rounded-md text-sm;
-}
-
-.page-item.disabled .page-link {
-  @apply cursor-not-allowed opacity-50;
-}
-
-.page-item.active .page-link {
-  @apply bg-blue-500 text-white;
-}
-
-</style>
 <body>
 @php
 
