@@ -56,22 +56,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store_og(PostStoreRequest $request): RedirectResponse
-    {
-        $this->authorize('create', Post::class);
-
-        $validated = $request->validated();
-        if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('public/public');
-        }
-
-        $post = Post::create($validated);
-
-        return redirect()
-            ->route('posts.index', $post)
-            ->withSuccess(__('crud.common.created'));
-    }
-
+  
 
     public function store(PostStoreRequest $request): RedirectResponse
     {
@@ -181,7 +166,7 @@ class PostController extends Controller
     }
     public function show_all_posts(Request $request): View
     {
-        $posts = Post::latest()->paginate(10);
+        $posts = Post::latest()->paginate(5);
         return view('website-pages.posts.all', compact('posts'));
     }
 }

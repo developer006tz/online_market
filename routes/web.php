@@ -43,10 +43,6 @@ Route::middleware(['auth'])
     ->name('dashboard');
 
 
-/*Route::get('/chat/{user}', function ($user) {
-    return redirect()->route('chatify', ['id' => $user]);
-});*/
-
 
 Route::get('post-details/{post}', [
     PostController::class,
@@ -57,23 +53,6 @@ Route::get('all-posts', [
     PostController::class,
     'show_all_posts',
 ])->name('all-post.show');
-
-
-Route::group(['middleware' => ['web', 'auth']], function () {
-    //...
-    // Chatify Routes
-    Route::get('/chatify', 'Chatify\Http\Controllers\MessagesController@index')->name(config('chatify.routes.home'));
-    Route::get('/chatify/messages', 'Chatify\Http\Controllers\MessagesController@fetch')->name(config('chatify.routes.fetch'));
-    Route::post('/chatify/send', 'Chatify\Http\Controllers\MessagesController@send')->name(config('chatify.routes.send'));
-    Route::get('/chatify/user/{id}', 'Chatify\Http\Controllers\MessagesController@user')->name(config('chatify.routes.user'));
-    Route::get('/chatify/seen', 'Chatify\Http\Controllers\MessagesController@seen')->name(config('chatify.routes.seen'));
-    Route::get('/chatify/delete/{id}', 'Chatify\Http\Controllers\MessagesController@deleteConversation')->name(config('chatify.routes.deleteConversation'));
-    Route::post('/chatify/update/settings', 'Chatify\Http\Controllers\MessagesController@updateSettings')->name(config('chatify.routes.updateSettings'));
-    Route::post('/chatify/star', 'Chatify\Http\Controllers\MessagesController@favorite')->name(config('chatify.routes.favorite'));
-    Route::get('/chatify/starred', 'Chatify\Http\Controllers\MessagesController@getFavorites')->name(config('chatify.routes.getFavorites'));
-    Route::post('/chatify/upload', 'Chatify\Http\Controllers\MessagesController@upload')->name(config('chatify.routes.upload'));
-    Route::get('/chatify/download/{fileName}', 'Chatify\Http\Controllers\MessagesController@download')->name(config('chatify.routes.download'));
-});
 
 
 
