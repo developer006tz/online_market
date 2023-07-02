@@ -11,7 +11,13 @@ class Post extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['user_id', 'title', 'description', 'image'];
+    protected $fillable = [
+        'user_id',
+        'title',
+        'description',
+        'image',
+        'post_category_id',
+    ];
 
     protected $searchableFields = ['*'];
 
@@ -20,13 +26,8 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function conversations()
+    public function postCategory()
     {
-        return $this->hasMany(Conversation::class);
-    }
-
-    public function postCategories()
-    {
-        return $this->belongsToMany(PostCategory::class);
+        return $this->belongsTo(PostCategory::class);
     }
 }

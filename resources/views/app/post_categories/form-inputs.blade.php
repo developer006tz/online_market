@@ -13,8 +13,15 @@
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
+        <x-inputs.textarea name="decription" label="Decription" maxlength="255"
+            >{{ old('decription', ($editing ? $postCategory->decription : ''))
+            }}</x-inputs.textarea
+        >
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
         <div
-            x-data="imageViewer('{{ $editing && $postCategory->image ? \Storage::url($postCategory->image) : '' }}')"
+            x-data="imageViewer('{{ $editing && $postCategory->image ? url(\Storage::url($postCategory->image)) : '' }}')"
         >
             <x-inputs.partials.label
                 name="image"

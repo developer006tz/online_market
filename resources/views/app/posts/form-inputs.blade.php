@@ -15,10 +15,10 @@
         <x-inputs.hidden name="user_id" value="{{ auth()->id() }}"></x-inputs.hidden>
     @endif
 
-    <x-inputs.group class="w-full">
+   <x-inputs.group class="w-full">
         <x-inputs.text
             name="title"
-            label="Post Title"
+            label="Title"
             :value="old('title', ($editing ? $post->title : ''))"
             maxlength="255"
             placeholder="Title"
@@ -39,7 +39,7 @@
 
     <x-inputs.group class="w-full">
         <div
-            x-data="imageViewer('{{ $editing && $post->image ? url(\Storage::url($post->image)) : '' }}')"
+            x-data="imageViewer('{{ $editing && $post->image ? \Storage::url($post->image) : '' }}')"
         >
             <x-inputs.partials.label
                 name="image"
@@ -76,5 +76,15 @@
             @error('image') @include('components.inputs.partials.error')
             @enderror
         </div>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.select name="post_category_id" label="Post Category" required>
+            @php $selected = old('post_category_id', ($editing ? $post->post_category_id : '')) @endphp
+            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Post Category</option>
+            @foreach($postCategories as $value => $label)
+            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
+            @endforeach
+        </x-inputs.select>
     </x-inputs.group>
 </div>

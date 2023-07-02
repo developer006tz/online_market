@@ -61,6 +61,9 @@
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.posts.inputs.image')
                                 </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.posts.inputs.post_category_id')
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -78,8 +81,12 @@
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     <x-partials.thumbnail
-                                        src="{{ $post->image ? url(\Storage::url($post->image)) : '' }}"
+                                        src="{{ $post->image ? \Storage::url($post->image) : '' }}"
                                     />
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ optional($post->postCategory)->title ??
+                                    '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -146,7 +153,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="5">
+                                <td colspan="6">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -154,7 +161,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="5">
+                                <td colspan="6">
                                     <div class="mt-10 px-4">
                                         {!! $posts->render() !!}
                                     </div>

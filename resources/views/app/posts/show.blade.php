@@ -38,9 +38,18 @@
                             @lang('crud.posts.inputs.image')
                         </h5>
                         <x-partials.thumbnail
-                            src="{{ $post->image ? url(\Storage::url($post->image)) : '' }}"
+                            src="{{ $post->image ? \Storage::url($post->image) : '' }}"
                             size="150"
                         />
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.posts.inputs.post_category_id')
+                        </h5>
+                        <span
+                            >{{ optional($post->postCategory)->title ?? '-'
+                            }}</span
+                        >
                     </div>
                 </div>
 

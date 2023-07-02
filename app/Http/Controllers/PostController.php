@@ -11,7 +11,7 @@ use App\Http\Requests\PostStoreRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostUpdateRequest;
 use Intervention\Image\Facades\Image;
-use Illuminate\Http\File;
+use App\Models\PostCategory;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -49,7 +49,8 @@ class PostController extends Controller
         $this->authorize('create', Post::class);
         $user = auth()->user();
         $users = $user->hasRole('customer') ||  $user->hasRole('seller')  ? collect([$user->id => $user->name]) : User::pluck('name', 'id');
-        return view('app.posts.create', compact('users'));
+        $postCategories = PostCategory::pluck('title', 'id');
+        return view('app.posts.create', compact('users', 'postCategories'));
     }
 
     /**
@@ -82,7 +83,7 @@ class PostController extends Controller
             $filename = str_replace(' ','-',strtolower(Auth::user()->name)).'-'. time() .'-'. str_replace(' ','-', substr(strtolower($request->title),0,25) ) . '.jpg';
             $image_resize = Image::make($image->getRealPath());
             $image_resize->resize(280, 350);
-            $image_resize->encode('jpg',75);
+            $image_resize->encode('jpg',80);
             $image_resize->save(storage_path('app/public/' . $filename));
             $validated['image'] = $filename;
         }
@@ -115,35 +116,15 @@ class PostController extends Controller
     {
         $this->authorize('update', $post);
 
+        $postCategories = PostCategory::pluck('title', 'id');
         $users = User::pluck('name', 'id');
 
-        return view('app.posts.edit', compact('post', 'users'));
+        return view(
+            'app.posts.edit',
+            compact('post', 'users', 'postCategories')
+        );
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    /*public function update(
-        PostUpdateRequest $request,
-        Post $post
-    ): RedirectResponse {
-        $this->authorize('update', $post);
-
-        $validated = $request->validated();
-        if ($request->hasFile('image')) {
-            if ($post->image) {
-                Storage::delete($post->image);
-            }
-
-            $validated['image'] = $request->file('image')->store('public');
-        }
-
-        $post->update($validated);
-
-        return redirect()
-            ->route('posts.index', $post)
-            ->withSuccess(__('crud.common.saved'));
-    }*/
 
 
     public function update(
@@ -159,7 +140,7 @@ class PostController extends Controller
             str_replace(' ', '-', strtolower(Auth::user()->name)) . '-' . time() . '-' . str_replace(' ', '-', substr(strtolower($request->title), 0, 25)) . '.jpg';
             $image_resize = Image::make($image->getRealPath());
             $image_resize->resize(280, 350);
-            $image_resize->encode('jpg', 75);
+            $image_resize->encode('jpg', 80);
             $image_resize->save(storage_path('app/public/' . $filename));
 
             if ($post->image) {
