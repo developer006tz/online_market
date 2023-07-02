@@ -54,6 +54,11 @@ Route::get('all-posts', [
     'show_all_posts',
 ])->name('all-post.show');
 
+Route::get('post-category/{post}', [
+    PostController::class,
+    'show_post_by_category',
+])->name('category.posts');
+
 
 
 require __DIR__ . '/auth.php';

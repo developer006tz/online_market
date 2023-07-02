@@ -21,9 +21,6 @@ class DatabaseSeeder extends Seeder
                 'password' => \Hash::make('admin'),
             ]);
         $this->call(PermissionsSeeder::class);
-
-        $this->call(ConversationSeeder::class);
-        $this->call(MessageSeeder::class);
         $this->call(PostSeeder::class);
         $this->call(PostCategorySeeder::class);
         $this->call(UserSeeder::class);

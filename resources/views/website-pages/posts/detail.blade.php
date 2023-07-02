@@ -51,7 +51,7 @@
 
                             <h2 class="text-gray-900 font-bold text-2xl"><i class="fa-solid fa-map-location-dot"></i> location details</h2>
                             <div class="location-wraper flex flex-col">
-                                <div class="region">
+                                <div class="region p-4">
                                     <p>{{ $post->user->location ?? '-' }}</p>
                                 </div>
                                 <div class="map iframe google">

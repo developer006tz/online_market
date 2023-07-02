@@ -38,7 +38,7 @@
                             @lang('crud.posts.inputs.image')
                         </h5>
                         <x-partials.thumbnail
-                            src="{{ $post->image ? \Storage::url($post->image) : '' }}"
+                            src="{{ $post->image ?url( \Storage::url($post->image) ): '' }}"
                             size="150"
                         />
                     </div>

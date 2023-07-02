@@ -94,6 +94,17 @@ class PostController extends Controller
         return view('website-pages.posts.detail',compact('post'));
     }
 
+    public function show_post_by_category($category): View
+    {
+        $category_ = PostCategory::find($category);
+        if(!empty($category_)){
+            $posts = Post::where('post_category_id', $category)->latest()->paginate(5);
+            return view('website-pages.posts.all', compact('posts','category_'));
+        }else{
+            return redirect()->back()->with('error', 'Category not found');
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
