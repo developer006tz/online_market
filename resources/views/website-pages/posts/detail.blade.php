@@ -49,7 +49,7 @@
                     <div class="bg-white w-full lg:w-2/2 p-6">
                         <div class="flex justify-between items-center mb-2">
 
-                            <h2 class="text-gray-900 font-bold text-2xl"><i class="fa-solid fa-map-location-dot"></i> location details</h2>
+                            <h2 class="text-gray-900 font-bold text-xl"><i class="fa-solid fa-map-location-dot"></i>User Location</h2>
                             <div class="location-wraper flex flex-col">
                                 <div class="region p-4">
                                     <p>{{ $post->user->location ?? '-' }}</p>

@@ -16,7 +16,7 @@
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        @can('view-any', App\Models\Posts::class)
+        @can('view-any', App\Models\Post::class)
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
          
 <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -32,7 +32,7 @@
 
         </div>
         @endcan
-       @can('view-any', App\Models\PostCategory::class)
+      @can('view-any', App\Models\PostCategory::class)
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <a href="{{route('post-categories.index')}}">

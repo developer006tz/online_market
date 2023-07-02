@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
                 'email' => 'admin@chambalo.com',
                 'name'=>'Deodatha Chambalo',
                 'phone'=>'0783562967',
+                'location'=>'Dar es salaam',
                 'password' => \Hash::make('admin'),
             ]);
         $this->call(PermissionsSeeder::class);

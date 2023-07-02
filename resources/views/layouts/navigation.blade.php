@@ -120,16 +120,6 @@
                 Post Categories
                 </x-responsive-nav-link>
                 @endcan
-                @can('view-any', App\Models\Message::class)
-                <x-responsive-nav-link href="{{ route('messages.index') }}">
-                Messages
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Conversation::class)
-                <x-responsive-nav-link href="{{ route('conversations.index') }}">
-                Conversations
-                </x-responsive-nav-link>
-                @endcan
                 @can('view-any', App\Models\Post::class)
                 <x-responsive-nav-link href="{{ route('posts.index') }}">
                 Posts
