@@ -8,7 +8,7 @@
 $categories = \App\Models\PostCategory::all();
 
 @endphp
-  <div class="mt-1">
+  <div class="mt-4">
           {{-- <input type="text" placeholder="Search.." name="search" autocomplete="off" required  value="{{ $search ?? '' }}" class="border border-gray-300 rounded-full px-4 py-2 mx-2 focus:outline-none text-lg focus:ring-1 focus:ring-yellow-600 focus:border focus:border-transparent" /> --}}
 
  <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
@@ -23,7 +23,7 @@ $categories = \App\Models\PostCategory::all();
                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                   @forelse($categories as $category)
                   <li >
-                    <a href="{{route('category.posts', $category->id)}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{$category->title}}</a>
+                    <a href="{{route('category.posts', ['post'=>$category->id, 'title'=>$category->title])}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{$category->title}}</a>
                   </li>
                   @empty
                   <li >
@@ -34,7 +34,7 @@ $categories = \App\Models\PostCategory::all();
             </div>
         </li>
         <li>
-          <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">recent</a>
+          <a href="{{route('recent.posts')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">recent</a>
         </li>
         @if(!Auth::check())
         <li>

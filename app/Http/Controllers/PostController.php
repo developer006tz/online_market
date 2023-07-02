@@ -105,6 +105,13 @@ class PostController extends Controller
         }
     }
 
+    public function show_recent_post(): View
+    {
+        $posts = Post::latest()->paginate(5);
+        $title = 'Recent Posts';
+        return view('website-pages.posts.all', compact('posts','title'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
