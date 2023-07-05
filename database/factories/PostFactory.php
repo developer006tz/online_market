@@ -26,6 +26,7 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence(10),
             'description' => $this->faker->sentence(15),
             'user_id' => \App\Models\User::factory(),
+            'post_category_id' => \App\Models\PostCategory::factory(),
         ];
     }
 }

@@ -11,7 +11,7 @@ use App\Http\Requests\PostStoreRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostUpdateRequest;
 use Intervention\Image\Facades\Image;
-use Illuminate\Http\File;
+use App\Models\PostCategory;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -49,7 +49,8 @@ class PostController extends Controller
         $this->authorize('create', Post::class);
         $user = auth()->user();
         $users = $user->hasRole('customer') ||  $user->hasRole('seller')  ? collect([$user->id => $user->name]) : User::pluck('name', 'id');
-        return view('app.posts.create', compact('users'));
+        $postCategories = PostCategory::pluck('title', 'id');
+        return view('app.posts.create', compact('users', 'postCategories'));
     }
 
     /**
@@ -67,7 +68,7 @@ class PostController extends Controller
             $filename = str_replace(' ','-',strtolower(Auth::user()->name)).'-'. time() .'-'. str_replace(' ','-', substr(strtolower($request->title),0,25) ) . '.jpg';
             $image_resize = Image::make($image->getRealPath());
             $image_resize->resize(280, 350);
-            $image_resize->encode('jpg',75);
+            $image_resize->encode('jpg',80);
             $image_resize->save(storage_path('app/public/' . $filename));
             $validated['image'] = $filename;
         }
@@ -93,6 +94,24 @@ class PostController extends Controller
         return view('website-pages.posts.detail',compact('post'));
     }
 
+    public function show_post_by_category($category): View
+    {
+        $category_ = PostCategory::find($category);
+        if(!empty($category_)){
+            $posts = Post::where('post_category_id', $category)->latest()->paginate(5);
+            return view('website-pages.posts.all', compact('posts','category_'));
+        }else{
+            return redirect()->back()->with('error', 'Category not found');
+        }
+    }
+
+    public function show_recent_post(): View
+    {
+        $posts = Post::latest()->paginate(5);
+        $title = 'Recent Posts';
+        return view('website-pages.posts.all', compact('posts','title'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -100,12 +119,16 @@ class PostController extends Controller
     {
         $this->authorize('update', $post);
 
+        $postCategories = PostCategory::pluck('title', 'id');
         $users = User::pluck('name', 'id');
 
-        return view('app.posts.edit', compact('post', 'users'));
+        return view(
+            'app.posts.edit',
+            compact('post', 'users', 'postCategories')
+        );
     }
 
- 
+
 
     public function update(
         PostStoreRequest $request,
@@ -120,7 +143,7 @@ class PostController extends Controller
             str_replace(' ', '-', strtolower(Auth::user()->name)) . '-' . time() . '-' . str_replace(' ', '-', substr(strtolower($request->title), 0, 25)) . '.jpg';
             $image_resize = Image::make($image->getRealPath());
             $image_resize->resize(280, 350);
-            $image_resize->encode('jpg', 75);
+            $image_resize->encode('jpg', 80);
             $image_resize->save(storage_path('app/public/' . $filename));
 
             if ($post->image) {

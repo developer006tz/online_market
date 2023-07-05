@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostCategoryStoreRequest;
 use App\Http\Requests\PostCategoryUpdateRequest;
+use Intervention\Image\Facades\Image;
 
 class PostCategoryController extends Controller
 {
@@ -51,7 +52,13 @@ class PostCategoryController extends Controller
 
         $validated = $request->validated();
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('public');
+            $image = $request->file('image');
+            $filename = time().'.jpg';
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->resize(132, 132);
+            $image_resize->encode('jpg', 80);
+            $image_resize->save(storage_path('app/public/' . $filename));
+            $validated['image'] = $filename;
         }
 
         $postCategory = PostCategory::create($validated);
@@ -92,11 +99,20 @@ class PostCategoryController extends Controller
 
         $validated = $request->validated();
         if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename =time().'.jpg';
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->resize(132, 132);
+            $image_resize->encode('jpg', 80);
+            $image_resize->save(storage_path('app/public/' . $filename));
+
             if ($postCategory->image) {
-                Storage::delete($postCategory->image);
+                if (file_exists(storage_path('app/public/' . $postCategory->image))) {
+                    unlink(storage_path('app/public/' . $postCategory->image));
+                }
             }
 
-            $validated['image'] = $request->file('image')->store('public');
+            $validated['image'] = $filename;
         }
 
         $postCategory->update($validated);

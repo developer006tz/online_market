@@ -53,6 +53,9 @@
                                     @lang('crud.post_categories.inputs.title')
                                 </th>
                                 <th class="px-4 py-3 text-left">
+                                    @lang('crud.post_categories.inputs.decription')
+                                </th>
+                                <th class="px-4 py-3 text-left">
                                     @lang('crud.post_categories.inputs.image')
                                 </th>
                                 <th></th>
@@ -65,8 +68,11 @@
                                     {{ $postCategory->title ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
+                                    {{ $postCategory->decription ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
                                     <x-partials.thumbnail
-                                        src="{{ $postCategory->image ? \Storage::url($postCategory->image) : '' }}"
+                                        src="{{ $postCategory->image ? url(\Storage::url($postCategory->image)) : '' }}"
                                     />
                                 </td>
                                 <td
@@ -134,7 +140,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -142,7 +148,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4">
                                     <div class="mt-10 px-4">
                                         {!! $postCategories->render() !!}
                                     </div>

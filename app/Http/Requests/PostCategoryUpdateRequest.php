@@ -21,6 +21,7 @@ class PostCategoryUpdateRequest extends FormRequest
     {
         return [
             'title' => ['required', 'max:255', 'string'],
+            'decription' => ['nullable', 'max:255', 'string'],
             'image' => ['nullable', 'image', 'max:1024'],
         ];
     }

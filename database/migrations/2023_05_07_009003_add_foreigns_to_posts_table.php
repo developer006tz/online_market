@@ -17,7 +17,16 @@ return new class extends Migration {
                 ->on('users')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
+
+            $table
+                ->foreign('post_category_id')
+                ->references('id')
+                ->on('post_categories')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
         });
+
+        
     }
 
     /**
@@ -27,6 +36,7 @@ return new class extends Migration {
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['post_category_id']);
         });
     }
 };

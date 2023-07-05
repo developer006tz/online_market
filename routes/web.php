@@ -11,7 +11,6 @@ use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\ConversationController;
 use Illuminate\Http\Request;
 use App\Models\Post;
-use Chatify\Http\Controllers\MessagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,6 +53,16 @@ Route::get('all-posts', [
     'show_all_posts',
 ])->name('all-post.show');
 
+Route::get('post-category/{post}/{title}', [
+    PostController::class,
+    'show_post_by_category',
+])->name('category.posts');
+
+Route::get('recent-post', [
+    PostController::class,
+    'show_recent_post',
+])->name('recent.posts');
+
 
 
 require __DIR__ . '/auth.php';
@@ -81,7 +90,6 @@ Route::prefix('/')
     ->group(function () {
         Route::resource('roles', RoleController::class);
         Route::resource('permissions', PermissionController::class);
-
         Route::resource('users', UserController::class);
         Route::resource('post-categories', PostCategoryController::class);
         Route::resource('messages', MessageController::class);

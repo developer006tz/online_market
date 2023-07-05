@@ -23,10 +23,16 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
+                            @lang('crud.post_categories.inputs.decription')
+                        </h5>
+                        <span>{{ $postCategory->decription ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
                             @lang('crud.post_categories.inputs.image')
                         </h5>
                         <x-partials.thumbnail
-                            src="{{ $postCategory->image ? \Storage::url($postCategory->image) : '' }}"
+                            src="{{ $postCategory->image ? url(\Storage::url($postCategory->image)) : '' }}"
                             size="150"
                         />
                     </div>

@@ -24,6 +24,7 @@ class PostCategoryFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(10),
+            'decription' => $this->faker->text(),
         ];
     }
 }

@@ -19,29 +19,25 @@
 
                 {{-- <x-nav-dropdown title="Apps" align="right" width="48"> --}}
                         @can('view-any', App\Models\User::class)
-                        <x-dropdown-link href="{{ route('users.index') }}">
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link href="{{ route('users.index') }}">
                         Users
-                        </x-dropdown-link>
+                        </x-nav-link>
+                        </div>
                         @endcan
                         @can('view-any', App\Models\PostCategory::class)
-                        <x-dropdown-link href="{{ route('post-categories.index') }}">
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link href="{{ route('post-categories.index') }}">
                         Post Categories
-                        </x-dropdown-link>
+                        </x-nav-link>
+                        </div>
                         @endcan
-                        {{-- @can('view-any', App\Models\Message::class)
-                        <x-dropdown-link href="{{ route('messages.index') }}">
-                        Messages
-                        </x-dropdown-link>
-                        @endcan
-                        @can('view-any', App\Models\Conversation::class)
-                        <x-dropdown-link href="{{ route('conversations.index') }}">
-                        Conversations
-                        </x-dropdown-link>
-                        @endcan --}}
                         @can('view-any', App\Models\Post::class)
-                        <x-dropdown-link href="{{ route('posts.index') }}">
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link href="{{ route('posts.index') }}">
                         Posts
-                        </x-dropdown-link>
+                        </x-nav-link>
+                        </div>
                         @endcan
                 {{-- </x-nav-dropdown> --}}
 
@@ -122,16 +118,6 @@
                 @can('view-any', App\Models\PostCategory::class)
                 <x-responsive-nav-link href="{{ route('post-categories.index') }}">
                 Post Categories
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Message::class)
-                <x-responsive-nav-link href="{{ route('messages.index') }}">
-                Messages
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Conversation::class)
-                <x-responsive-nav-link href="{{ route('conversations.index') }}">
-                Conversations
                 </x-responsive-nav-link>
                 @endcan
                 @can('view-any', App\Models\Post::class)

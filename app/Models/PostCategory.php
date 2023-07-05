@@ -11,7 +11,7 @@ class PostCategory extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['title', 'image'];
+    protected $fillable = ['title', 'decription', 'image'];
 
     protected $searchableFields = ['*'];
 
@@ -19,6 +19,6 @@ class PostCategory extends Model
 
     public function posts()
     {
-        return $this->belongsToMany(Post::class);
+        return $this->hasMany(Post::class);
     }
 }
