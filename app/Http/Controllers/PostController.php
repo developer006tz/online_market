@@ -161,7 +161,7 @@ class PostController extends Controller
     }
     public function show_all_posts(Request $request): View
     {
-        $posts = Post::latest()->paginate(5);
+        $posts = Post::latest()->paginate(10);
         return view('website-pages.posts.all', compact('posts'));
     }
 }
