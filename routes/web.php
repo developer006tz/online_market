@@ -31,21 +31,10 @@ Route::get('/', function (Request $request) {
         ->latest()
         ->paginate(4)
         ->withQueryString();
-        $recent_posts = Post::latest()->take(4)->get();
-    return view('welcome', compact('posts', 'search', 'recent_posts'));
-});
-
-
-Route::get('market', function (Request $request) {
-    $search = $request->get('search', '');
-
-    $posts = Post::search($search)
-        ->latest()
-        ->paginate(4)
-        ->withQueryString();
-    $recent_posts = Post::latest()->take(4)->get();
+        $recent_posts = Post::latest()->take(2)->get();
     return view('welcome', compact('posts', 'search', 'recent_posts'));
 })->name('website.index');
+
 
 
 Route::middleware(['auth'])
