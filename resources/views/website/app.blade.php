@@ -48,9 +48,6 @@ $user = Auth::user();
       </div>
       @include('website-pages.login-modal')
       @stack('modals')
-
-        @livewireScripts
-
         @stack('scripts')
 
         <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>

@@ -35,11 +35,26 @@ Route::get('/', function (Request $request) {
     return view('welcome', compact('posts', 'search', 'recent_posts'));
 });
 
+
+Route::get('market', function (Request $request) {
+    $search = $request->get('search', '');
+
+    $posts = Post::search($search)
+        ->latest()
+        ->paginate(4)
+        ->withQueryString();
+    $recent_posts = Post::latest()->take(4)->get();
+    return view('welcome', compact('posts', 'search', 'recent_posts'));
+})->name('website.index');
+
+
 Route::middleware(['auth'])
     ->get('/dashboard', function () {
         return view('dashboard');
     })
     ->name('dashboard');
+
+
 
 
 

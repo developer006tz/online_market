@@ -12,7 +12,7 @@
               All posts 
            @endisset
             @endisset</h2>
-          <a href="{{url('/')}}" class="flex flex-row text-lg hover:text-purple-700">
+          <a href="{{route('website.index')}}" class="flex flex-row text-lg hover:text-purple-700">
             back
             <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-5 ml-1" fill="none" viewBox="0 0 24 24"
               stroke="currentColor">
