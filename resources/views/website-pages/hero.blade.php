@@ -86,23 +86,10 @@
     @endpush
     @push('scripts')
     <script>
-$(document).ready(function(){
-  $('#default-carousel').attr('data-carousel', 'slide');
-   var carousel = $('#default-carousel').carousel();
-   // Pause cycling on hover
-  $('#default-carousel').on('mouseenter', function(){
-    carousel.pause();
-  });
-   // Resume cycling on mouse leave
-  $('#default-carousel').on('mouseleave', function(){
-    carousel.cycle();
-  });
+  $(document).ready(function(){
+    
+    $('#default-carousel').attr('data-carousel', 'slide');
   
-  // Pause cycling on click
-  $('#default-carousel').on('click', function(){
-    carousel.pause();
   });
- 
-});
 </script>
     @endpush

@@ -58,6 +58,12 @@ $user = Auth::user();
             notyf.success('{{ session('success') }}')
         </script>
         @endif
+        @if (session()->has('error'))
+        <script>
+            var notyf = new Notyf({dismissible: true})
+            notyf.error('{{ session('error') }}')
+        </script>
+        @endif
       <!-- Include Flowbite JS -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.js"
         integrity="sha512-CABi9vrtlQz9otMo5nT0B3nCBmn5BirYvO3oCnulsEzRDekxdMEZ2rXg85Is5pdnc9HNAcUEjm/7HagpqAFa1w=="
