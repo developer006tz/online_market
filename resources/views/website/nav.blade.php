@@ -3,7 +3,7 @@
     <div class="w-30 h-20">
       {{-- show me where to buy logo --}}
       <img src="{{asset('assets/images/3.png')}}" class="hue-rotate-30 w-60" />
-      {{-- maneno  --}}
+      {{-- logo in words  --}}
       {{-- <h1 class="font-serif text-5xl text-gray-600 mb-4 text-center md:self-start md:text-left">SHOW ME WHERE ARE YOU</h1> --}}
     </div>
   </div>
