@@ -19,7 +19,10 @@
                width="280" alt="{{Str::limit($post->title,20) ?? '-'}}" height="350" class="rounded-tl-lg w-full rounded-tr-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110" />
             </a>
             <div class="p-5">
-              <h3 class="bg-gray-1 border-yellow- font-extrabold"><a href="#">{{Str::limit($post->title,24) ?? '-'}}</a></h3>
+              {{-- //post title --}}
+              <h3 class="bg-gray-1  border-yellow- font-extrabold">
+                <a class="text-blue" href="#">{{Str::limit($post->title,24) ?? '-'}}</a>
+              </h3>
               <div
                 class="wrapper p-1 rounded-lg border-gray-300 bg-pink-50 shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
 
