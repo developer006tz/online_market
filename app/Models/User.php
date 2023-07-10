@@ -39,16 +39,6 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function conversations()
-    {
-        return $this->hasMany(Conversation::class, 'seller_id');
-    }
-
-    public function messages()
-    {
-        return $this->hasMany(Message::class);
-    }
-
     public function isSuperAdmin(): bool
     {
         return $this->hasRole('super-admin');

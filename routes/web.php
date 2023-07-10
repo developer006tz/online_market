@@ -37,11 +37,20 @@ Route::get('/', function (Request $request) {
 
 
 
+
 Route::middleware(['auth'])
     ->get('/dashboard', function () {
         return view('dashboard');
     })
     ->name('dashboard');
+
+Route::get('/conversations/all', function (Request $request) {
+    $user = $request->user();
+    $chatify = new Chatify\ChatifyMessenger();
+
+    $messages = $chatify->countUnseenMessages(1);
+    dd($messages);
+})->middleware('auth')->name('conversations.all');
 
 
 
