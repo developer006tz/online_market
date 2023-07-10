@@ -1,7 +1,10 @@
 <div class="md:flex md:flex-row md:justify-between text-center text-sm sm:text-base">
   <div class="flex flex-row justify-center">
     <div class="w-30 h-20">
+      {{-- show me where to buy logo --}}
       <img src="{{asset('assets/images/3.png')}}" class="hue-rotate-30 w-60" />
+      {{-- maneno  --}}
+      {{-- <h1 class="font-serif text-5xl text-gray-600 mb-4 text-center md:self-start md:text-left">SHOW ME WHERE ARE YOU</h1> --}}
     </div>
   </div>
 @php 
