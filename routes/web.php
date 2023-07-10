@@ -31,7 +31,7 @@ Route::get('/', function (Request $request) {
         ->latest()
         ->paginate(4)
         ->withQueryString();
-        $recent_posts = Post::latest()->take(2)->get();
+        $recent_posts = Post::latest()->take(8)->get();
     return view('welcome', compact('posts', 'search', 'recent_posts'));
 })->name('website.index');
 
