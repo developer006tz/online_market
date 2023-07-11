@@ -33,27 +33,15 @@
                 class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-2/2 left-2/2" alt="hero">
                 <div
                   class="absolute bottom-0 left-0 right-0 flex flex-col items-center justify-center p-4 text-center text-white bg-black bg-opacity-50">
-                  <h3 class="text-lg font-semibold animate-bounce">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                  <h3 class="text-lg font-semibold animate-bounce">No carousel</h3>
+                  <p>no carousel.</p>
                 </div>
             </div>
             @endforelse
             @endisset
 
           </div>
-          <!-- Slider indicators -->
-          <!-- <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
-              data-carousel-slide-to="0"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
-              data-carousel-slide-to="1"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
-              data-carousel-slide-to="2"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
-              data-carousel-slide-to="3"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
-              data-carousel-slide-to="4"></button>
-          </div> -->
+
           <!-- Slider controls -->
           <button type="button"
             class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
